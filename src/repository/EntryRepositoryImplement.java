@@ -29,14 +29,20 @@ public class EntryRepositoryImplement implements EntryRepository{
 
     @Override
     public void delete(String title) {
-
+        for(Entry myEntry : entries){
+            if (myEntry.getTitle().equals(title)) {
+                entries.remove(myEntry);
+                break;
+            }
+        }
     }
 
     @Override
     public void delete(Entry entry) {
         for(Entry myEntry : entries){
             if (myEntry == entry) {
-                entries.remove(entry);
+                entries.remove(myEntry);
+                break;
             }
         }
     }

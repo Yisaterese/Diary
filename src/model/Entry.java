@@ -4,7 +4,7 @@ public class Entry {
     private String body;
     private String title;
     private String author;
-    private int Id;
+    private int id;
     public Entry(){
 
     }
@@ -13,7 +13,11 @@ public class Entry {
         this.title = title;
         this.author = author;
     }
-    public void update(Entry body) {
+    public void setId(int id) {
+           this.id = id;
+    }
 
+    public String getTitle() {
+        return title;
     }
 }
