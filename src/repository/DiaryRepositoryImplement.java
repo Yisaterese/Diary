@@ -11,6 +11,7 @@ public class DiaryRepositoryImplement implements DiaryRepository {
     public Diary save(Diary diary) {
        if(!diaries.contains(diary)) {
            diaries.add(diary);
+           return diary;
        }
        return null;
 
@@ -28,13 +29,12 @@ public class DiaryRepositoryImplement implements DiaryRepository {
 
     @Override
     public void delete(String username) {
-        for (Diary myDiary:diaries)
-            if(myDiary.getUserName().equals(username)){
-                diaries.remove(myDiary);
+        for (int index = 0; index < diaries.size(); index++){
+            if(diaries.get(index).getUserName().equals(username)){
+                diaries.remove(diaries.get(index));
                 break;
-
             }
-    }
+    }}
 
     @Override
     public void delete(Diary diary) {

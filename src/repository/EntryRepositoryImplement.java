@@ -2,7 +2,6 @@ package repository;
 
 import model.Diary;
 import model.Entry;
-import org.junit.jupiter.api.TestInfo;
 
 import java.util.ArrayList;
 import java.util.List;

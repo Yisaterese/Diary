@@ -45,13 +45,13 @@ public class DiaryRepositoryImplementTest {
     public  void addDiariesToRepositoryDeleteOneByUserNameTest(){
         DiaryRepositoryImplement diaryRepositoryImplement  = new DiaryRepositoryImplement();
         Diary diary = new Diary();
-        Diary diary1 = new Diary("userName");
+        Diary diary1 = new Diary("userName","password");
         Diary diary2 = new Diary();
         diaryRepositoryImplement.save(diary);
         diaryRepositoryImplement.save(diary1);
         diaryRepositoryImplement.save(diary2);
         diaryRepositoryImplement.delete(diary1.getUserName());
-        assertEquals(1, diaryRepositoryImplement.count());
+        assertEquals(2, diaryRepositoryImplement.count());
     }
 
 
