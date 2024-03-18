@@ -28,13 +28,21 @@ public class DiaryRepositoryImplement implements DiaryRepository {
     }
 
     @Override
-    public void delete(String username) {
-        for (int index = 0; index < diaries.size(); index++){
-            if(diaries.get(index).getUserName().equals(username)){
-                diaries.remove(diaries.get(index));
-                break;
+    public void delete(String userName) {
+        Diary foundDiary = findByUserName(userName);
+        diaries.remove(foundDiary);
+
+    }
+
+    private Diary findByUserName(String userName) {
+         for (int index = 0; index < diaries.size(); index++){
+            if(diaries.get(index).getUserName().equals(userName)) {
+                return diaries.get(index);
             }
-    }}
+        }
+         return null;
+    }
+
 
     @Override
     public void delete(Diary diary) {

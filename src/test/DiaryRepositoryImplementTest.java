@@ -2,7 +2,6 @@ package test;
 
 import model.Diary;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import repository.DiaryRepositoryImplement;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -44,14 +43,13 @@ public class DiaryRepositoryImplementTest {
     @Test
     public  void addDiariesToRepositoryDeleteOneByUserNameTest(){
         DiaryRepositoryImplement diaryRepositoryImplement  = new DiaryRepositoryImplement();
-        Diary diary = new Diary();
-        Diary diary1 = new Diary("userName","password");
-        Diary diary2 = new Diary();
-        diaryRepositoryImplement.save(diary);
+        Diary diary1 = new Diary();
+        diary1.setUserName("userName");
+        diary1.setPassword("password");
         diaryRepositoryImplement.save(diary1);
-        diaryRepositoryImplement.save(diary2);
-        diaryRepositoryImplement.delete(diary1.getUserName());
-        assertEquals(2, diaryRepositoryImplement.count());
+        assertEquals(1, diaryRepositoryImplement.count());
+        diaryRepositoryImplement.delete("userName");
+        assertEquals(0, diaryRepositoryImplement.count());
     }
 
 
