@@ -1,19 +1,33 @@
 package repository;
 
-import model.Diary;
 import model.Entry;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EntryRepositoryImplement implements EntryRepository{
+public class EntryRepositoryImplement implements EntryRepository {
     private List<Entry> entries = new ArrayList<>();
+    private int id = 1;
+    private int count;
+
 
     @Override
-    public Diary save(Entry entry) {
-            if (!entries.contains(entry))
-                entries.add(entry);
-            return null;
+    public Entry save(Entry entry) {
+        if(isNew(entry)) entries.add(entry);
+        else update(entry);
+        return null;
+    }
+
+    private void update(Entry entry) {
+        for(Entry myEntry: entries) if(myEntry == entry)delete(myEntry);
+        entries.add(entry);
+    }
+
+    private boolean isNew(Entry entry) {
+            if(!entries.contains(entry)){
+                entry.setId(++count);
+            }
+    return false;
     }
 
     @Override
@@ -28,7 +42,7 @@ public class EntryRepositoryImplement implements EntryRepository{
 
     @Override
     public void delete(String title) {
-        for(Entry myEntry : entries){
+        for (Entry myEntry : entries) {
             if (myEntry.getTitle().equals(title)) {
                 entries.remove(myEntry);
                 break;
@@ -38,7 +52,7 @@ public class EntryRepositoryImplement implements EntryRepository{
 
     @Override
     public void delete(Entry entry) {
-        for(Entry myEntry : entries){
+        for (Entry myEntry : entries) {
             if (myEntry == entry) {
                 entries.remove(myEntry);
                 break;
@@ -46,10 +60,10 @@ public class EntryRepositoryImplement implements EntryRepository{
         }
     }
 
-    public Entry findById(int id){
-        for(Entry myEntry : entries){
-            if (id == myEntry.getId()) {
-               return myEntry;
+    public Entry findById(int id) {
+        for (Entry myEntry : entries) {
+            if (myEntry.getId() == id) {
+                return myEntry;
             }
         }
         return null;
