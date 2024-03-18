@@ -1,17 +1,23 @@
 package test;
 
 import model.Diary;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
 import repository.DiaryRepositoryImplement;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DiaryRepositoryImplementTest {
-
+private  DiaryRepositoryImplement diaryRepositoryImplement;
+@Before
+public void initializer(){
+    diaryRepositoryImplement  = new DiaryRepositoryImplement();
+}
 
     @Test
     public  void addDiariesToRepositoryTest(){
-        DiaryRepositoryImplement diaryRepositoryImplement  = new DiaryRepositoryImplement();
+
         Diary diary = new Diary();
         Diary diary1 = new Diary();
         diaryRepositoryImplement.save(diary);
@@ -21,7 +27,6 @@ public class DiaryRepositoryImplementTest {
 
     @Test
     public  void addDiariesToRepositoryFindAllTest(){
-        DiaryRepositoryImplement diaryRepositoryImplement  = new DiaryRepositoryImplement();
         Diary diary = new Diary();
         Diary diary1 = new Diary();
         diaryRepositoryImplement.save(diary);
@@ -31,7 +36,7 @@ public class DiaryRepositoryImplementTest {
 
     @Test
     public  void addDiariesToRepositoryDeleteOneTest(){
-        DiaryRepositoryImplement diaryRepositoryImplement  = new DiaryRepositoryImplement();
+
         Diary diary = new Diary();
         Diary diary1 = new Diary();
         diaryRepositoryImplement.save(diary);
@@ -42,7 +47,6 @@ public class DiaryRepositoryImplementTest {
 
     @Test
     public  void addDiariesToRepositoryDeleteOneByUserNameTest(){
-        DiaryRepositoryImplement diaryRepositoryImplement  = new DiaryRepositoryImplement();
         Diary diary1 = new Diary();
         diary1.setUserName("userName");
         diary1.setPassword("password");
@@ -50,6 +54,16 @@ public class DiaryRepositoryImplementTest {
         assertEquals(1, diaryRepositoryImplement.count());
         diaryRepositoryImplement.delete("userName");
         assertEquals(0, diaryRepositoryImplement.count());
+    }
+
+    @Test
+    public  void addDiariesToRepositoryDeleteOneByUserNameReturnDiaryTest(){
+        Diary diary = new Diary();
+        diary.setUserName("userName");
+        diary.setPassword("password");
+        diaryRepositoryImplement.save(diary);
+        assertEquals(1, diaryRepositoryImplement.count());
+        assertEquals(diary, diaryRepositoryImplement.findByUserName(diary.getUserName()));
     }
 
 

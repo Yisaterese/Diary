@@ -45,4 +45,13 @@ public class EntryRepositoryImplement implements EntryRepository{
             }
         }
     }
+
+    public Entry findById(int id){
+        for(Entry myEntry : entries){
+            if (id == myEntry.getId()) {
+               return myEntry;
+            }
+        }
+        return null;
+    }
 }

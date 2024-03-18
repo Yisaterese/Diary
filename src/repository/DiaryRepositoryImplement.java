@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiaryRepositoryImplement implements DiaryRepository {
-    private List<Diary> diaries = new ArrayList<>();
+    private  List<Diary> diaries = new ArrayList<>();
     @Override
     public Diary save(Diary diary) {
        if(!diaries.contains(diary)) {
@@ -34,7 +34,7 @@ public class DiaryRepositoryImplement implements DiaryRepository {
 
     }
 
-    private Diary findByUserName(String userName) {
+    public  Diary findByUserName(String userName) {
          for (int index = 0; index < diaries.size(); index++){
             if(diaries.get(index).getUserName().equals(userName)) {
                 return diaries.get(index);

@@ -17,4 +17,13 @@ public class DiaryServiceImplementTest {
         assertEquals(1, diaryServiceImplement.numberOfDiaries());
 
     }
+
+    @Test
+    public void registerDiary(){
+        DiaryServiceImplement diaryServiceImplement = new DiaryServiceImplement();
+        RegisterRequest request = new RegisterRequest("UserName", "Password");
+        diaryServiceImplement.register(request);
+        assertEquals(1, diaryServiceImplement.numberOfDiaries());
+
+    }
 }

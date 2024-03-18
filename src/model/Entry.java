@@ -20,4 +20,8 @@ public class Entry {
     public String getTitle() {
         return title;
     }
+
+    public int getId() {
+        return id;
+    }
 }
