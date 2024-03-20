@@ -8,7 +8,7 @@ public class RegisterRequest {
         this.userName = userName;
     }
 
-    public String getPassword() {
+    public RegisterRequest getPassword() {
         return password;
     }
 

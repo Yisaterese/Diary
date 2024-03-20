@@ -19,11 +19,19 @@ public class DiaryServiceImplementTest {
     }
 
     @Test
-    public void registerDiary(){
+    public void registerDiaryTest(){
         DiaryServiceImplement diaryServiceImplement = new DiaryServiceImplement();
         RegisterRequest request = new RegisterRequest("UserName", "Password");
         diaryServiceImplement.register(request);
         assertEquals(1, diaryServiceImplement.numberOfDiaries());
+    }
 
+    @Test
+    public void loginToDiary(){
+        DiaryServiceImplement diaryServiceImplement = new DiaryServiceImplement();
+        RegisterRequest request = new RegisterRequest("UserName", "Password");
+        diaryServiceImplement.register(request);
+        diaryServiceImplement.logIn(request.getPassword());
+        assertEquals(1, diaryServiceImplement.numberOfDiaries());
     }
 }

@@ -14,7 +14,10 @@ private  DiaryRepositoryImplement diaryRepositoryImplement;
 public void initializer(){
     diaryRepositoryImplement  = new DiaryRepositoryImplement();
 }
-
+    @AfterEach
+    public void collapseList(){
+        diaryRepositoryImplement.findAll().clear();
+    }
     @Test
     public  void addDiariesToRepositoryTest(){
 

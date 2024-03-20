@@ -7,7 +7,6 @@ import java.util.List;
 
 public class EntryRepositoryImplement implements EntryRepository {
     private List<Entry> entries = new ArrayList<>();
-    private int id = 1;
     private int count;
 
 
@@ -26,8 +25,8 @@ public class EntryRepositoryImplement implements EntryRepository {
     private boolean isNew(Entry entry) {
             if(!entries.contains(entry)){
                 entry.setId(++count);
-            }
-    return false;
+            };
+        return false;
     }
 
     @Override

@@ -41,7 +41,7 @@ public class EntryRepositoryImplementTest {
 
 
     @Test
-    public void registerTwoEntry_deleteOneTitleTest(){
+    public void registerTwoEntry_deleteOneByTitleTest(){
         Entry entry = new Entry("Chibuzo","My love lif", "First day i met you my heart jigi papan");
         Entry entry1 = new Entry("Amebo","My first heart break","I ate till over fed my sef and finally rested in peace on my");
         entryRepositoryImplement.save(entry);
@@ -60,12 +60,11 @@ public class EntryRepositoryImplementTest {
     }
 
     @Test
-    public void registerTwoEntry_updateEntryTest(){
-        Entry entry = new Entry("Chibuzo","My love lif", "First day i met you my heart jigi papan");
-        Entry entry1 = new Entry("Amebo","My first heart break","I ate till over fed my sef and finally rested in peace on my");
-        entryRepositoryImplement.save(entry);
+    public void registerTwoEntries_entryTwoIdIs2Test(){
+        Entry entry1 = new Entry("Chibuzo","My love life", "First day i met you my heart jigi papan");
+        Entry entry2 = new Entry("Amebo","My first heart break","I ate till over fed my sef and finally rested in peace on my");
         entryRepositoryImplement.save(entry1);
-        //entryRepositoryImplement.update();
-        assertEquals(entry, entryRepositoryImplement.findById(1));
+        entryRepositoryImplement.save(entry2);
+        assertEquals(entry2, entryRepositoryImplement.findById(2));
     }
 }
