@@ -1,5 +1,6 @@
 package services;
 
+import InvalidUserNameException.InvalidUserNameException;
 import dto.request.RegisterRequest;
 import model.Diary;
 import repository.DiaryRepositoryImplement;
@@ -25,7 +26,13 @@ public class DiaryServiceImplement implements DiaryService{
 
     @Override
     public boolean logIn(String userName, String password) {
-        //if(isLocked) {
+            RegisterRequest request = new RegisterRequest();
+            DiaryRepositoryImplement diaryRepositoryImplement1 = new DiaryRepositoryImplement();
+            Diary foundDiary = diaryRepositoryImplement1.findByUserName(userName);
+            if(!foundDiary.getUserName().equals(userName))throw new InvalidUserNameException("provided username not found");
+            request.setPassword(password);
+            if(!foundDiary.&& foundDiary.setPassword(request1.getPassword())));
+
             Diary diary = new Diary();
             request1.setUserName(userName);
             diary.setUserName(request1.getUserName());

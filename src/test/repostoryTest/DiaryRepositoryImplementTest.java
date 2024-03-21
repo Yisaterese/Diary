@@ -1,4 +1,4 @@
-package test;
+package test.repostoryTest;
 
 import model.Diary;
 import org.junit.Before;

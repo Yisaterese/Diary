@@ -1,4 +1,4 @@
-package test;
+package test.servicesTest;
 
 import dto.request.RegisterRequest;
 import model.Diary;
@@ -36,7 +36,6 @@ public class DiaryServiceImplementTest {
         diary.setUserName(request.getUserName());
         request.setPassword("password");
         diary.setPassword(request.getPassword());
-        repositoryImplement.save(diary);
         diaryServiceImplement.register(request);
         assertFalse( diaryServiceImplement.logIn(request.getUserName(), request.getPassword()));
     }
