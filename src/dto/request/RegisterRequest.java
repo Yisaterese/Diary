@@ -3,12 +3,11 @@ package dto.request;
 public class RegisterRequest {
     private String userName;
 
-    public RegisterRequest(String userName, String password){
-        this.password = password;
-        this.userName = userName;
+    public RegisterRequest(){
+
     }
 
-    public RegisterRequest getPassword() {
+    public String getPassword() {
         return password;
     }
 

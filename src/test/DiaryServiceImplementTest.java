@@ -6,13 +6,13 @@ import org.junit.Test;
 import repository.DiaryRepositoryImplement;
 import services.DiaryServiceImplement;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DiaryServiceImplementTest {
     @Test
     public void registerDiaryWithUserNameAndPassword(){
         DiaryServiceImplement diaryServiceImplement = new DiaryServiceImplement();
-        RegisterRequest request = new RegisterRequest("UserName", "Password");
+        RegisterRequest request = new RegisterRequest();
         diaryServiceImplement.register(request);
         assertEquals(1, diaryServiceImplement.numberOfDiaries());
 
@@ -21,7 +21,7 @@ public class DiaryServiceImplementTest {
     @Test
     public void registerDiaryTest(){
         DiaryServiceImplement diaryServiceImplement = new DiaryServiceImplement();
-        RegisterRequest request = new RegisterRequest("UserName", "Password");
+        RegisterRequest request = new RegisterRequest();
         diaryServiceImplement.register(request);
         assertEquals(1, diaryServiceImplement.numberOfDiaries());
     }
@@ -29,9 +29,15 @@ public class DiaryServiceImplementTest {
     @Test
     public void loginToDiary(){
         DiaryServiceImplement diaryServiceImplement = new DiaryServiceImplement();
-        RegisterRequest request = new RegisterRequest("UserName", "Password");
+        DiaryRepositoryImplement repositoryImplement = new DiaryRepositoryImplement();
+        RegisterRequest request = new RegisterRequest();
+        Diary diary = new Diary();
+        request.setUserName("userName");
+        diary.setUserName(request.getUserName());
+        request.setPassword("password");
+        diary.setPassword(request.getPassword());
+        repositoryImplement.save(diary);
         diaryServiceImplement.register(request);
-        diaryServiceImplement.logIn(request.getPassword());
-        assertEquals(1, diaryServiceImplement.numberOfDiaries());
+        assertFalse( diaryServiceImplement.logIn(request.getUserName(), request.getPassword()));
     }
 }
