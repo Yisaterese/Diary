@@ -20,6 +20,6 @@ public class DiaryControllerTest {
         diary.setUserName(request.getPassword());
         DiaryServiceImplement diaryServiceImplement = new DiaryServiceImplement();
         diaryServiceImplement.register(request);
-        assertTrue();
+        //assertTrue();
     }
 }

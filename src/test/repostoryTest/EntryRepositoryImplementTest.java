@@ -27,7 +27,6 @@ public class EntryRepositoryImplementTest {
         assertEquals(2, entryRepositoryImplement.count());
 
     }
-
     @Test
     public void registerTwoEntry_deleteOneEntryTes(){
         Entry entry = new Entry();
@@ -38,33 +37,54 @@ public class EntryRepositoryImplementTest {
         assertEquals(1, entryRepositoryImplement.count());
 
     }
-
-
     @Test
     public void registerTwoEntry_deleteOneByTitleTest(){
-        Entry entry = new Entry("Chibuzo","My love lif", "First day i met you my heart jigi papan");
-        Entry entry1 = new Entry("Amebo","My first heart break","I ate till over fed my sef and finally rested in peace on my");
-        entryRepositoryImplement.save(entry);
+        Entry entry1 = new Entry();
+        Entry entry2 = new Entry();
+        entry1.setAuthor("Chibuzo");
+        entry1.setTitle("My love life");
+        entry1.setBody("First day i met you my heart jigi papan");
         entryRepositoryImplement.save(entry1);
+
+        entry2.setAuthor("Amebo");
+        entry2.setTitle("My first heart break");
+        entry2.setBody("I ate till over fed my sef and finally rested in peace on my");
+        entryRepositoryImplement.save(entry2);
+
         entryRepositoryImplement.delete(entry1.getTitle());
         assertEquals(1, entryRepositoryImplement.count());
 
     }
     @Test
     public void registerTwoEntry_findByIdTest(){
-        Entry entry = new Entry("Chibuzo","My love lif", "First day i met you my heart jigi papan");
-        Entry entry1 = new Entry("Amebo","My first heart break","I ate till over fed my sef and finally rested in peace on my");
-        entryRepositoryImplement.save(entry);
+        Entry entry1 = new Entry();
+        Entry entry2 = new Entry();
+        entry1.setAuthor("Chibuzo");
+        entry1.setTitle("My love life");
+        entry1.setBody("First day i met you my heart jigi papan");
         entryRepositoryImplement.save(entry1);
-        assertEquals(entry, entryRepositoryImplement.findById(1));
-    }
 
+        entry2.setAuthor("Amebo");
+        entry2.setTitle("My first heart break");
+        entry2.setBody("I ate till over fed my sef and finally rested in peace on my");
+        entryRepositoryImplement.save(entry2);
+
+        assertEquals(entry1, entryRepositoryImplement.findById(1));
+    }
     @Test
     public void registerTwoEntries_entryTwoIdIs2Test(){
-        Entry entry1 = new Entry("Chibuzo","My love life", "First day i met you my heart jigi papan");
-        Entry entry2 = new Entry("Amebo","My first heart break","I ate till over fed my sef and finally rested in peace on my");
+        Entry entry = new Entry();
+        Entry entry1 = new Entry();
+        entry.setAuthor("Chibuzo");
+        entry.setTitle("My love life");
+        entry.setBody("First day i met you my heart jigi papan");
+        entryRepositoryImplement.save(entry);
+
+        entry1.setAuthor("Amebo");
+        entry1.setTitle("My first heart break");
+        entry1.setBody("I ate till over fed my sef and finally rested in peace on my");
         entryRepositoryImplement.save(entry1);
-        entryRepositoryImplement.save(entry2);
-        assertEquals(entry2, entryRepositoryImplement.findById(2));
+
+        assertEquals(entry1, entryRepositoryImplement.findById(2));
     }
 }

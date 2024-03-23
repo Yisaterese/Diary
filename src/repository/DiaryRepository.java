@@ -10,4 +10,6 @@ public interface DiaryRepository {
     long count();
     void delete(String username);
     void delete(Diary diary);
+
+    Diary findByUserName(String userName);
 }

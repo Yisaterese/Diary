@@ -1,16 +1,7 @@
 package dto.request;
 
-public class RegisterRequest {
+public class LogInRequest {
     private String userName;
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     private String password;
 
     public String getUserName() {
@@ -19,5 +10,13 @@ public class RegisterRequest {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
